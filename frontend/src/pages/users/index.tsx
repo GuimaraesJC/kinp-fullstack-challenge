@@ -1,4 +1,5 @@
-import { useFetchUsers } from "../../services/users/useUsers"
+import UserItem from '../../components/UserItem'
+import { useFetchUsers } from '../../services/users/useUsers'
 
 const UsersPage = () => {
   const { data, isLoading } = useFetchUsers()
@@ -6,9 +7,11 @@ const UsersPage = () => {
   console.log(data, isLoading)
 
   return (
-    <div>
-      <h1>Users</h1>
-    </div>
+    <ul role="list" className="divide-y divide-gray-100">
+      {data?.map((user) => (
+        <UserItem key={user.id} user={user}  />
+      ))}
+    </ul>
   )
 }
 

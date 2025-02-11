@@ -1,4 +1,4 @@
-export type UserResponse = {
+export type UserProps = {
   id: number
   name: string
   username: string
@@ -21,3 +21,5 @@ export type UserResponse = {
     bs: string
   }
 }
+
+export type UserResponse = UserProps[]

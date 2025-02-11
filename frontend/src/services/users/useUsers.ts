@@ -5,7 +5,7 @@ import { UserResponse } from './types'
 import { AxiosError } from 'axios'
 
 export const useFetchUsers = () => {
-  return useQuery<UserResponse[], AxiosError>({
+  return useQuery<UserResponse, AxiosError>({
     queryFn: fetchUsers,
     queryKey: ['fetchUsers'],
     refetchInterval: 10 * 60 * 1000, // 10 minutes in milliseconds
