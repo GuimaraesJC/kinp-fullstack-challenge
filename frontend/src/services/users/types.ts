@@ -23,3 +23,11 @@ export type UserProps = {
 }
 
 export type UserResponse = UserProps[]
+
+export type AlbumProps = {
+  userId: number
+  id: number
+  title: string
+}
+
+export type AlbumResponse = AlbumProps[]

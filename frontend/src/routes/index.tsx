@@ -5,6 +5,7 @@ import LoginPage from '../pages/login'
 import SignUpPage from '../pages/signup'
 import ProtectedRoute from './protectedRoute'
 import UsersPage from '../pages/users'
+import AlbumsPage from '../pages/albums'
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: <UsersPage />
+          },
+          {
+            path: ':userId/albums',
+            element: <AlbumsPage />
           }
         ]
       }
