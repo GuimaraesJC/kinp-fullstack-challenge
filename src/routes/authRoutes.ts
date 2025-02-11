@@ -3,8 +3,10 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { users } from '../data/users'
 
+import { REALLY_SECRET_TOKEN } from '../constants/jwt'
+
 const router = express.Router()
-const SECRET = process.env.JWT_SECRET || 'really-secret'
+const SECRET = process.env.JWT_SECRET || REALLY_SECRET_TOKEN
 
 router.post('/signup', async (req: Request, res: Response) => {
   const { name, email, password } = req.body

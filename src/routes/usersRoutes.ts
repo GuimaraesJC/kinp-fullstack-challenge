@@ -1,9 +1,10 @@
 import express from 'express'
 import api from '../utils/axios'
+import { authenticateToken } from '../middleware/authMiddleware'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken,  async (req, res) => {
   try {
     const response = await api.get('/users')
     res.json(response.data)
