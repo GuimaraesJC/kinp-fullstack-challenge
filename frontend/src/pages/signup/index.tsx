@@ -12,7 +12,7 @@ const SignUpPage = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form action="#" method="POST" className="space-y-6">
           <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 text-left">
                 Your Name
               </label>
               <div className="mt-2">
@@ -27,7 +27,7 @@ const SignUpPage = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 text-left">
                 Email address
               </label>
               <div className="mt-2">
