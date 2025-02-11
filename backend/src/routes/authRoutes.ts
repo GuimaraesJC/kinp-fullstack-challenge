@@ -16,6 +16,11 @@ router.post('/signup', async (req: Request, res: Response) => {
     return
   }
 
+  if (!name || !email || !password) {
+    res.status(400).json({ error: 'Missing required fields' })
+    return
+  }
+
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const user = {
