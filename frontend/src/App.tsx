@@ -1,8 +1,15 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 import './App.css'
 
 function App() {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+  };
+
   return (
     <header className='flex border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50'>
       <div className='flex flex-wrap items-center gap-4 w-full'>
@@ -49,8 +56,10 @@ function App() {
         </div>
 
         <div className='flex items-center ml-auto space-x-6'>
-          <Link to='/login' className='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Log
-            in</Link>
+          <Link to='/login' onClick={handleLogout} className='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>
+            Log out
+          </Link>
+
 
           <button className='lg:hidden'>
             <svg className="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
