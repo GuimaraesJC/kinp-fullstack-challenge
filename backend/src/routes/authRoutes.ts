@@ -11,13 +11,13 @@ const SECRET = process.env.JWT_SECRET || REALLY_SECRET_TOKEN
 router.post('/signup', async (req: Request, res: Response) => {
   const { name, email, password } = req.body
 
-  if (users.find(user => user.email === email)) {
-    res.status(400).json({ error: 'User already exists' })
+  if (!name || !email || !password) {
+    res.status(400).json({ error: 'Missing required fields' })
     return
   }
 
-  if (!name || !email || !password) {
-    res.status(400).json({ error: 'Missing required fields' })
+  if (users.find(user => user.email === email)) {
+    res.status(400).json({ error: 'User already exists' })
     return
   }
 
@@ -42,6 +42,11 @@ router.post('/signup', async (req: Request, res: Response) => {
 router.post('/login', async (req, res) => {
   const { email, password } = req.body
   const user = users.find(user => user.email === email)
+
+  if (!email || !password) {
+    res.status(400).json({ error: 'Missing required fields' })
+    return
+  }
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(401).json({ error: 'Invalid credentials' })
