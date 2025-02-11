@@ -6,7 +6,7 @@ import SignUpPage from '../pages/signup'
 import ProtectedRoute from './protectedRoute'
 import UsersPage from '../pages/users'
 import AlbumsPage from '../pages/albums'
-import NotFoundPage from '../pages/NotFound'
+import NotFoundPage from '../pages/notFound'
 
 export const router = createBrowserRouter([
   {
