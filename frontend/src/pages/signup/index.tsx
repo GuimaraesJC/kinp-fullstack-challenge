@@ -1,4 +1,19 @@
+import { useState } from 'react'
+
+import { useSignUp } from '../../services/auth/useAuth'
+
 const SignUpPage = () => {
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
+  const { mutateAsync, isPending } = useSignUp()
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    mutateAsync({ name, email, password })
+  }
+
   return (
 
     <>
@@ -10,9 +25,9 @@ const SignUpPage = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
-          <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 text-left">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="name" className="block text-sm/6 font-medium text-gray-900 text-left">
                 Your Name
               </label>
               <div className="mt-2">
@@ -20,6 +35,7 @@ const SignUpPage = () => {
                   id="name"
                   name="name"
                   type="text"
+                  onChange={(e) => setName(e.target.value)}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
@@ -35,6 +51,7 @@ const SignUpPage = () => {
                   id="email"
                   name="email"
                   type="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
@@ -52,6 +69,7 @@ const SignUpPage = () => {
                   id="password"
                   name="password"
                   type="password"
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
@@ -78,9 +96,10 @@ const SignUpPage = () => {
             <div>
               <button
                 type="submit"
+                disabled={isPending}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Register
+                 {isPending ? "Signing up..." : "Sign Up"}
               </button>
             </div>
           </form>
