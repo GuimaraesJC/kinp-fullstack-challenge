@@ -150,3 +150,5 @@ Since the project was developed within an 8-hour timeframe, certain aspects were
 **On back-end, a structure of MVC or similar to handle logic in a separate layer:** Improve code organization and maintainability by separating business logic from route handlers using an MVC or service-based architecture. However, since this position focuses on Front-End, I chose to keep the logic within the same file.
 
 **On back-end, use a database:** Store and manage data persistently rather than relying on in-memory storage, improving scalability and reliability.
+
+**Use Docker for Project Setup and Database Integration:** Containerize the application using Docker to streamline setup and ensure consistency across environments. This includes setting up a Docker Compose configuration to easily run the frontend, backend, and database services, simplifying local development and deployment.
