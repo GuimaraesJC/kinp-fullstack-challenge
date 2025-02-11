@@ -40,11 +40,9 @@ function App() {
                   </a>
                 </li>
                 <li className='max-lg:border-b max-lg:py-3'>
-                  <a href='javascript:void(0)'
-                    className='hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]'>Users</a>
-                </li>
-                <li className='max-lg:border-b max-lg:py-3'><a href='javascript:void(0)'
-                  className='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Albums</a>
+                  <Link to="/" className='hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]'>
+                    Users
+                  </Link>
                 </li>
               </ul>
             </div>
