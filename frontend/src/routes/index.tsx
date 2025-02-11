@@ -6,6 +6,7 @@ import SignUpPage from '../pages/signup'
 import ProtectedRoute from './protectedRoute'
 import UsersPage from '../pages/users'
 import AlbumsPage from '../pages/albums'
+import NotFoundPage from '../pages/NotFound'
 
 export const router = createBrowserRouter([
   {
@@ -34,5 +35,9 @@ export const router = createBrowserRouter([
         ]
       }
     ]
-  }
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
 ])
