@@ -1,19 +1,21 @@
 import api from '../axios'
+import {
+  SignUpRequestParams,
+  SignUpResponse,
+  LoginRequestParams,
+  LoginResponse
+} from './types'
 
-type SignUpRequestParams = {
-  name: string
-  email: string
-  password: string
-}
+
 
 export const signup = async ({ name, email, password }: SignUpRequestParams) => {
-  const response = await api.post('/auth/signup', { name, email, password })
+  const response = await api.post<SignUpResponse>('/auth/signup', { name, email, password })
 
   return response.data
 }
 
-export const login = async ({ email, password }: { email: string; password: string }) => {
-   const response = await api.post('/auth/login', { email, password })
+export const login = async ({ email, password }: LoginRequestParams) => {
+  const response = await api.post<LoginResponse>('/auth/login', { email, password })
 
-   return response.data
+  return response.data
 }

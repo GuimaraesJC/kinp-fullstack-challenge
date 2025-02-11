@@ -1,12 +1,20 @@
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import {
+  SignUpRequestParams,
+  SignUpResponse,
+  LoginRequestParams,
+  LoginResponse
+} from './types'
+
 
 import { signup, login } from '.'
+import { AxiosError } from 'axios'
 
 export const useSignUp = () => {
   const navigate = useNavigate()
 
-  return useMutation({
+  return useMutation<SignUpResponse, AxiosError, SignUpRequestParams>({
     mutationFn: signup,
     mutationKey: ['signup'],
     onSuccess: () => {
@@ -22,7 +30,7 @@ export const useSignUp = () => {
 export const useLogin = () => {
   const navigate = useNavigate()
 
-  return useMutation({
+  return useMutation<LoginResponse, AxiosError, LoginRequestParams>({
     mutationFn: login,
     mutationKey: ['login'],
     onSuccess: (data) => {
