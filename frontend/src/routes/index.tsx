@@ -4,22 +4,29 @@ import App from '../App'
 import LoginPage from '../pages/login'
 import SignUpPage from '../pages/signup'
 import ProtectedRoute from './protectedRoute'
+import UsersPage from '../pages/users'
 
 export const router = createBrowserRouter([
   {
-    path: "/login",
+    path: '/login',
     element: <LoginPage />,
   },
   {
-    path: "/signup",
+    path: '/signup',
     element: <SignUpPage />,
   },
   {
+    path: '/',
     element: <ProtectedRoute />,
     children: [
       {
-        path: '/',
-        element: <App />
+        element: <App />,
+        children: [
+          {
+            index: true,
+            element: <UsersPage />
+          }
+        ]
       }
     ]
   }
