@@ -32,4 +32,18 @@ router.post('/signup', async (req: Request, res: Response) => {
   })
 })
 
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body
+  const user = users.find(user => user.email === email)
+
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    res.status(401).json({ error: 'Invalid credentials' })
+    return
+  }
+
+  const token = jwt.sign({ id: user.id }, SECRET, { expiresIn: '1h' })
+  res.json({ token, user: { id: user.id, name: user.name, email: user.email } })
+})
+
+
 export default router
